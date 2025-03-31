@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { Folder, FileText, Eye, MoreVertical, Upload, ChevronDown, ChevronUp, Menu, Bell, Headset } from "lucide-react";
 import Navbar from "../components/Navbar"
+import Sidebar from "@/components/Sidebar";
 
 export default function TeacherDashboard() {
   const [selectedCourse, setSelectedCourse] = useState("Course for Chemistry");
@@ -12,38 +13,9 @@ export default function TeacherDashboard() {
 
   return (
     <div className="flex flex-col h-screen">
-      {/* Navbar */}
       <Navbar></Navbar>
       <div className="flex flex-1">
-        {/* Sidebar */}
-        <aside className="w-64 bg-gray-100 p-4 space-y-2">
-          <nav className="space-y-2">
-            <Button variant="ghost" className="w-full justify-start">Teach</Button>
-            <Button variant="ghost" className="w-full justify-start">Dashboard</Button>
-            
-            {/* Manage Batch Dropdown */}
-            <div>
-              <Button 
-                variant="ghost" 
-                className="flex justify-between items-center ml-12" 
-                onClick={() => setIsManageBatchOpen(!isManageBatchOpen)}
-              >
-                Manage Batch <span>{isManageBatchOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}</span>
-              </Button>
-              {isManageBatchOpen && (
-                <div className="pl-4 space-y-2">
-                  <Button variant="ghost" className="w-full justify-start">All Batches</Button>
-                  <Button variant="ghost" className="w-full justify-start">Resources</Button>
-                </div>
-              )}
-            </div>
-            
-            <Button variant="ghost" className="w-full justify-start">My Earnings</Button>
-            <Button variant="ghost" className="w-full justify-start">Timetable</Button>
-            <Button variant="ghost" className="w-full justify-start">Analytics</Button>
-          </nav>
-        </aside>
-        
+        <Sidebar></Sidebar>
         {/* Main Content */}
         <main className="flex-1 p-6">
           <div className="flex justify-between items-center mb-4">
@@ -59,7 +31,7 @@ export default function TeacherDashboard() {
             </div>
             <Button className="bg-black text-white">Take Class</Button>
           </div>
-          
+
           {/* Tabs */}
           <div className="flex border-b pb-2 space-x-4">
             <Button variant="ghost">Students</Button>
@@ -69,7 +41,7 @@ export default function TeacherDashboard() {
             <Button variant="ghost">Attendance</Button>
             <Button variant="ghost">Discussion</Button>
           </div>
-          
+
           {/* Content */}
           <Card className="mt-4">
             <CardContent className="p-4">
